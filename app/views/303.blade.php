@@ -1,16 +1,20 @@
-<!doctype html>
-<html lang="en">
-<head>
-<title>Ceefax</title>
+@extends('layout')
 
-<style type="text/css">
-</style>
+@section('title', 'Football Story')
 
-</head>
+@section('content')
 
-<body>
+<?php
+	$i = 1;
+	$page = 303;
+?>
+@foreach ($feed->get_items() as $item)
+	@if($i < 2)
+		<h1>{{ $item->get_title() }}</h1>
+		<?php $i++; $page++ ?>
+	@endif
+@endforeach
 
-{{ $article }}
+{{ $article['content'] }}
 
-</body>
-</html>
+@stop

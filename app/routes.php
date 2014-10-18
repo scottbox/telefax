@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/300', 'HomeController@index');
 Route::get('/301', 'HomeController@sportsHeadlines');
 Route::get('/302', 'HomeController@footballHeadlines');
 Route::get('/303', 'HomeController@footballStory');

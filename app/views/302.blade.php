@@ -1,14 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-<title>Ceefax</title>
+@extends('layout')
 
-<style type="text/css">
-</style>
+@section('title', 'Football Story')
 
-</head>
-
-<body>
+@section('content')
 
 <?php
 	$i = 1;
@@ -16,12 +10,11 @@
 ?>
 @foreach ($feed->get_items() as $item)
 	@if($i < 10)
-		<pre>{{ $item->get_title() }} - {{ $page }}</pre>
-		<div class="story"></div>
+		<p>{{ $item->get_title() }} - {{ $page }}</p>
+		{{ Form::hidden('url', $item->get_permalink()) }}
 		<?php $i++; $page++ ?>
 	@endif
 @endforeach
-<pre>Football news in brief - 312</pre>
+<p>Football news in brief - 312</p>
 
-</body>
-</html>
+@stop

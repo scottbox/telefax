@@ -1,25 +1,24 @@
-<!doctype html>
-<html lang="en">
-<head>
-<title>Ceefax</title>
+@extends('layout')
 
-<style type="text/css">
-</style>
+@section('title', 'Football Story')
 
-</head>
-
-<body>
+@section('content')
 
 <?php
 	$i = 1;
 ?>
 @foreach ($feed->get_items() as $item)
 	@if($i < 10)
-		<pre>{{ $item->get_title() }}</pre>
-		<div class="story"></div>
+		<?php
+			$url = explode('/', $item->get_permalink());
+			$category = $url[5];
+			$category = str_replace('-', ' ', $category);
+			$category = ucwords($category);
+			
+		?>
+		<p>{{ $category }} {{ $item->get_title() }}</p>
 		<?php $i++; ?>
 	@endif
 @endforeach
 
-</body>
-</html>
+@stop
